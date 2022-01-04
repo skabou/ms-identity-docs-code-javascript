@@ -37,10 +37,10 @@ app.get('/', (req, res) => {
   const authCodeUrlParameters = {
 
     // The scope is the API scope we are authorizing
-    scopes: ['api://443c932e-7ce9-483a-9481-876854566c38/tomato'],
+    scopes: [''],
 
     // The redirectUri is where MSAL will redirect the browser after the authorization attempt
-    redirectUri: 'http://localhost:8080/redirect'
+    redirectUri: `http://localhost:${SERVER_PORT}/redirect`
   }
 
   // Create the URL for the authorization request then redirect to that URL
@@ -59,8 +59,8 @@ app.get('/redirect', (req, res) => {
     code: req.query.code,
 
     // These are the scope(s) and redirectUri needed by our API
-    scopes: ['api://443c932e-7ce9-483a-9481-876854566c38/tomato'],
-    redirectUri: 'http://localhost:8080/redirect'
+    scopes: [''],
+    redirectUri: `http://localhost:${SERVER_PORT}/redirect`
   }
 
   // Attempt to validate the token request for our scope(s) and URI
